@@ -1,21 +1,269 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PS3Xploit - Flash Writer 4.82</title>
 <style>
-button {height:50px;padding:10px 30px;font-size:20px;font-weight:bold;}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background-color: #0a0e14;
+  background-image: -webkit-linear-gradient(top, #0a0e14 0%, #0d1520 100%);
+  background-image: linear-gradient(180deg, #0a0e14 0%, #0d1520 100%);
+  color: #c8d8e8;
+  font-family: "Courier New", Courier, monospace;
+  min-height: 100%;
+  padding: 20px 16px 40px;
+}
+
+.shell {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* ---- HEADER ---- */
+.header {
+  text-align: center;
+  padding: 28px 20px 22px;
+  border-bottom: 1px solid #1e3a5a;
+  margin-bottom: 24px;
+}
+
+.brand {
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #4a8fc0;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #e8f4ff;
+  letter-spacing: 1px;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.fw-badge {
+  display: inline-block;
+  background-color: #0d2a44;
+  border: 1px solid #1e6090;
+  border-radius: 3px;
+  color: #5ab4f0;
+  font-size: 11px;
+  letter-spacing: 3px;
+  padding: 3px 10px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: #6a8aaa;
+  letter-spacing: 1px;
+}
+
+/* ---- CREDITS ---- */
+.credits {
+  text-align: center;
+  font-size: 11px;
+  color: #4a6880;
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+}
+
+/* ---- DIVIDER ---- */
+.divider {
+  height: 1px;
+  background-color: #1e3a5a;
+  margin-bottom: 24px;
+}
+
+/* ---- CARD ---- */
+.card {
+  background-color: #0d1a28;
+  border: 1px solid #1e3a5a;
+  border-radius: 4px;
+  padding: 24px 20px;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #4a8fc0;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #1a3050;
+}
+
+/* ---- BUTTON GROUP ---- */
+.btn-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 12px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.btn-group-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 12px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 12px;
+}
+
+.btn-group-row:last-child {
+  margin-bottom: 0;
+}
+
+/* ---- BUTTONS ---- */
+.btn {
+  display: inline-block;
+  min-width: 140px;
+  padding: 14px 20px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 3px;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-nand {
+  background-color: #0d2a44;
+  border: 1px solid #1e6090;
+  color: #5ab4f0;
+}
+
+.btn-nor {
+  background-color: #1a1a0a;
+  border: 1px solid #5a6010;
+  color: #c8d000;
+}
+
+.btn-nand:hover,
+.btn-nand:focus {
+  background-color: #163650;
+  border-color: #3a90c0;
+  color: #88d0ff;
+  outline: none;
+}
+
+.btn-nor:hover,
+.btn-nor:focus {
+  background-color: #252510;
+  border-color: #a0b020;
+  color: #e8f000;
+  outline: none;
+}
+
+.btn-label {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #4a6880;
+  margin-top: 4px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+/* ---- WARNING ---- */
+.warning {
+  background-color: #1a0a0a;
+  border: 1px solid #5a1010;
+  border-left: 3px solid #c03030;
+  border-radius: 3px;
+  padding: 12px 16px;
+  font-size: 11px;
+  color: #c08080;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+.warning strong {
+  color: #e05050;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 10px;
+}
+
+/* ---- FOOTER ---- */
+.footer {
+  text-align: center;
+  font-size: 10px;
+  color: #2a4060;
+  letter-spacing: 2px;
+  margin-top: 28px;
+  text-transform: uppercase;
+}
 </style>
-<center>
-<H1><font color=red>PS3 NOR/NAND Flash Writer v2.0.0 for HFW 4.82 (Official)</font></H1>
-<H2>Thanks to: PS3Xploit Team, littlebalup, Joonie</H2>
-<hr>
-<H3>Select Flash Type and Dumping Device</b></H3>
-<br>
-<button onclick="window.location='index_nand.html';"> NAND USB </button>
-&nbsp;
-<button onclick="window.location='index_nand_hdd.html';"> NAND HDD </button>
-&nbsp;
-&nbsp;
-&nbsp;
-<button onclick="window.location='index_nor.html';"> NOR USB </button>
-&nbsp;
-<button onclick="window.location='index_nor_hdd.html';"> NOR HDD </button>
-</center>
+</head>
+<body>
+<div class="shell">
+
+  <div class="header">
+    <div class="brand">PS3Xploit</div>
+    <div class="title">NOR / NAND Flash Writer</div>
+    <div class="fw-badge">HFW 4.82</div>
+    <div class="subtitle">Select flash type and dump device to begin</div>
+  </div>
+
+  <div class="credits">Thanks to: PS3Xploit Team &mdash; littlebalup &mdash; Joonie</div>
+
+  <div class="divider"></div>
+
+  <div class="card">
+    <div class="card-title">Select Flash Type &amp; Dumping Device</div>
+
+    <div class="btn-group-row">
+      <button class="btn btn-nand" onclick="window.location='index_nand.html';">
+        NAND USB
+        <span class="btn-label">USB drive</span>
+      </button>
+      <button class="btn btn-nand" onclick="window.location='index_nand_hdd.html';">
+        NAND HDD
+        <span class="btn-label">Internal HDD</span>
+      </button>
+    </div>
+    <div class="btn-group-row">
+      <button class="btn btn-nor" onclick="window.location='index_nor.html';">
+        NOR USB
+        <span class="btn-label">USB drive</span>
+      </button>
+      <button class="btn btn-nor" onclick="window.location='index_nor_hdd.html';">
+        NOR HDD
+        <span class="btn-label">Internal HDD</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="warning">
+    <strong>Warning:</strong> Flashing your PS3 is a high-risk operation. A bad dump or
+    interrupted write can brick your console permanently. Always verify the integrity of
+    your flash dump before proceeding to patch. Use only on compatible hardware.
+  </div>
+
+  <div class="footer">PS3 Flash Writer v2.0.0 &mdash; Official Release</div>
+
+</div>
+</body>
 </html>
