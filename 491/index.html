@@ -1,348 +1,94 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PS3Xploit - Flash Writer 4.91</title>
+<title>PS3Xploit - Flash Writer</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-  background-color: #0a0e14;
-  background-image: -webkit-linear-gradient(top, #0a0e14 0%, #0d1520 100%);
-  background-image: linear-gradient(180deg, #0a0e14 0%, #0d1520 100%);
-  color: #c8d8e8;
-  font-family: "Courier New", Courier, monospace;
-  min-height: 100%;
-  padding: 20px 16px 40px;
-}
-
-.shell {
-  max-width: 680px;
-  margin: 0 auto;
-}
-
-.header {
-  text-align: center;
-  padding: 28px 20px 22px;
-  border-bottom: 1px solid #1e3a5a;
-  margin-bottom: 24px;
-}
-
-.brand {
-  font-size: 11px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: #4a8fc0;
-  margin-bottom: 10px;
-}
-
-.title {
-  font-size: 22px;
-  font-weight: bold;
-  color: #e8f4ff;
-  letter-spacing: 1px;
-  line-height: 1.3;
-  margin-bottom: 8px;
-}
-
-.fw-badge {
-  display: inline-block;
-  background-color: #0d2a44;
-  border: 1px solid #1e6090;
-  border-radius: 3px;
-  color: #5ab4f0;
-  font-size: 11px;
-  letter-spacing: 3px;
-  padding: 3px 10px;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-
-.subtitle {
-  font-size: 12px;
-  color: #6a8aaa;
-  letter-spacing: 1px;
-}
-
-.credits {
-  text-align: center;
-  font-size: 11px;
-  color: #4a6880;
-  margin-bottom: 24px;
-  letter-spacing: 1px;
-}
-
-.divider {
-  height: 1px;
-  background-color: #1e3a5a;
-  margin-bottom: 24px;
-}
-
-.card {
-  background-color: #0d1a28;
-  border: 1px solid #1e3a5a;
-  border-radius: 4px;
-  padding: 24px 20px;
-  margin-bottom: 20px;
-}
-
-.card-title {
-  font-size: 11px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #4a8fc0;
-  margin-bottom: 16px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #1a3050;
-}
-
-.select-wrap {
-  margin-bottom: 20px;
-}
-
-.select-label {
-  display: block;
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: #4a6880;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-
-select#usbList {
-  width: 100%;
-  background-color: #060e18;
-  border: 1px solid #1e4060;
-  border-radius: 3px;
-  color: #88c0e0;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 13px;
-  padding: 10px 12px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.action-row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  gap: 14px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-input#init,
-input#nand {
-  min-width: 160px;
-  padding: 16px 24px;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 15px;
-  font-weight: bold;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  cursor: pointer;
-  border-radius: 3px;
-  border: none;
-}
-
-input#init {
-  background-color: #1a1a0a;
-  border: 1px solid #5a6010;
-  color: #c8d000;
-}
-
-input#nand {
-  background-color: #0d2a44;
-  border: 1px solid #1e6090;
-  color: #5ab4f0;
-}
-
-input#init:hover,
-input#init:focus {
-  background-color: #252510;
-  border-color: #a0b020;
-  color: #e8f000;
-  outline: none;
-}
-
-input#nand:hover,
-input#nand:focus {
-  background-color: #163650;
-  border-color: #3a90c0;
-  color: #88d0ff;
-  outline: none;
-}
-
-input#init:disabled,
-input#nand:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-}
-
-#result {
-  background-color: #060e18;
-  border: 1px solid #1e3a5a;
-  border-radius: 3px;
-  min-height: 56px;
-  padding: 14px 16px;
-  font-size: 13px;
-  color: #88c0e0;
-  line-height: 1.7;
-  margin-bottom: 20px;
-  outline: none;
-}
-
-#result h3 { font-size: 13px; font-weight: normal; }
-#result span[style*="color:green"],
-#result span[style*="color: green"] { color: #40c870 !important; }
-#result span[style*="color:red"],
-#result span[style*="color: red"]   { color: #e05050 !important; }
-#result a { color: #5ab4f0; }
-
-#offsets {
-  margin-bottom: 20px;
-}
-
-#offsets table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 11px;
-}
-
-#offsets th,
-#offsets td {
-  border: 1px solid #1e3a5a;
-  padding: 6px 10px;
-  text-align: left;
-}
-
-#offsets th {
-  background-color: #0d2038;
-  color: #4a8fc0;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-size: 10px;
-}
-
-#offsets td {
-  color: #88c0e0;
-}
-
-#offsets td:last-child {
-  color: #c8d000;
-  font-size: 12px;
-}
-
-.warning {
-  background-color: #1a0a0a;
-  border: 1px solid #5a1010;
-  border-left: 3px solid #c03030;
-  border-radius: 3px;
-  padding: 12px 16px;
-  font-size: 11px;
-  color: #c08080;
-  line-height: 1.6;
-  letter-spacing: 0.5px;
-  margin-bottom: 20px;
-}
-
-.warning strong {
-  color: #e05050;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 10px;
-}
-
-.footer {
-  text-align: center;
-  font-size: 10px;
-  color: #2a4060;
-  letter-spacing: 2px;
-  margin-top: 8px;
-  text-transform: uppercase;
+table, th, td {
+  border: 1px solid;
 }
 </style>
-</head>
-<body>
-<div class="shell">
-
-  <div class="header">
-    <div class="brand">PS3Xploit</div>
-    <div class="title">NOR / NAND Flash Writer</div>
-    <div class="fw-badge">HFW 4.91</div>
-    <div class="subtitle">Dump and patch your PS3 flash memory</div>
-  </div>
-
-  <div class="credits">Thanks to: PS3Xploit Team &mdash; Evilnat &mdash; kostirez1 &mdash; littlebalup &mdash; Joonie<br>
-  Special thanks: bguerville &mdash; lmn7 &mdash; aldostools &mdash; VideogamesSCZ (beta testers)</div>
-
-  <div class="divider"></div>
-
-  <div class="warning">
-    <strong>Warning:</strong> Flashing is a high-risk operation. A bad dump or interrupted
-    write can permanently brick your console. Always verify your flash dump integrity before
-    proceeding to patch.
-  </div>
-
-  <div class="card" id="dropdown">
-    <div class="card-title">USB Flash Dumping Device</div>
-    <div class="select-wrap">
-      <label class="select-label" for="usbList">Select USB port</label>
-      <select id="usbList" onchange="updateDumpPath()">
-        <option>/dev_usb000/</option>
-        <option>/dev_usb001/</option>
-        <option>/dev_usb002/</option>
-        <option>/dev_usb003/</option>
-        <option>/dev_usb004/</option>
-        <option>/dev_usb005/</option>
-        <option>/dev_usb006/</option>
-        <option>/dev_usb007/</option>
-      </select>
-    </div>
-    <div class="action-row">
-      <input id='init' type='button' value='NOR' onclick='initROP(true)'/>
-      <input id='nand' type='button' value='NAND' onclick='nand()'/>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title">Status</div>
-    <div id="result" tabindex="0"></div>
-  </div>
-
+<center>
+  <h1><span style='color:red'>PS3 NOR/NAND Flash Writer 4.91 (Unofficial)</span></h1>
+  <h2>Thanks to: PS3Xploit Team, Evilnat, kostirez1, littlebalup, Joonie</h2>
+  Special Thanks to bguerville, lmn7, Joonie, littlebalup, Evilnat, aldostools and VideogamesSCZ for beta test</h2>
+  <hr>
+	<div id="dropdown">
+	<h3>Select USB Flash Dumping Device</h3>
+	<select id="usbList" onchange="updateDumpPath()">
+	<option>/dev_usb000/</option>
+	<option>/dev_usb001/</option>
+	<option>/dev_usb002/</option>
+	<option>/dev_usb003/</option>
+	<option>/dev_usb004/</option>
+	<option>/dev_usb005/</option>
+	<option>/dev_usb006/</option>
+	<option>/dev_usb007/</option>
+	</select>
+	</div>
+	<h3>
+	<input id='init' style='margin:0px 10px 0px 10px' type='button' value='NOR' onclick='initROP(true)'/>
+	<input id='nand' style='margin:0px 10px 0px 10px' type='button' value='NAND' onclick='nand()'/>
+	</h3>
+  <div id="result" tabindex="0"></div>
   <div id="offsets" style="display: none;">
   <table>
-    <tr>
-      <th>Name</th>
-      <th>Offset</th>
-    </tr>
-    <tr><td>xtra_data</td><td id="xtra_data_offset"></td></tr>
-    <tr><td>stack_frame</td><td id="stack_frame_offset"></td></tr>
-    <tr><td>jump2</td><td id="jump_2_offset"></td></tr>
-    <tr><td>jump1</td><td id="jump_1_offset"></td></tr>
-    <tr><td>stack_frame2</td><td id="stack_frame2_offset"></td></tr>
-    <tr><td>jump_2_2</td><td id="jump_2_2_offset"></td></tr>
-    <tr><td>jump_1_2</td><td id="jump_1_2_offset"></td></tr>
-    <tr><td>stack_frame3</td><td id="stack_frame3_offset"></td></tr>
-    <tr><td>jump_1_3</td><td id="jump_1_3_offset"></td></tr>
-    <tr><td>jump_2_3</td><td id="jump_2_3_offset"></td></tr>
-    <tr><td>stack_frame4</td><td id="stack_frame4_offset"></td></tr>
-    <tr><td>jump_1_4</td><td id="jump_1_4_offset"></td></tr>
-    <tr><td>jump_2_4</td><td id="jump_2_4_offset"></td></tr>
+	<tr>
+		<th>Name</th>
+		<th>Offset</th>
+	</tr>
+	<tr>
+		<td>xtra_data</td>
+		<td id="xtra_data_offset"></td>
+	</tr>
+	<tr>
+		<td>stack_frame</td>
+		<td id="stack_frame_offset"></td>
+	</tr>
+	<tr>
+		<td>jump2</td>
+		<td id="jump_2_offset"></td>
+	</tr>
+	<tr>
+		<td>jump1</td>
+		<td id="jump_1_offset"></td>
+	</tr>
+	<tr>
+		<td>stack_frame2</td>
+		<td id="stack_frame2_offset"></td>
+	</tr>
+	<tr>
+		<td>jump_2_2</td>
+		<td id="jump_2_2_offset"></td>
+	</tr>
+	<tr>
+		<td>jump_1_2</td>
+		<td id="jump_1_2_offset"></td>
+	</tr>
+	<tr>
+		<td>stack_frame3</td>
+		<td id="stack_frame3_offset"></td>
+	</tr>
+	<tr>
+		<td>jump_1_3</td>
+		<td id="jump_1_3_offset"></td>
+	</tr>
+	<tr>
+		<td>jump_2_3</td>
+		<td id="jump_2_3_offset"></td>
+	</tr>
+	<tr>
+		<td>stack_frame4</td>
+		<td id="stack_frame4_offset"></td>
+	</tr>
+	<tr>
+		<td>jump_1_4</td>
+		<td id="jump_1_4_offset"></td>
+	</tr>
+	<tr>
+		<td>jump_2_4</td>
+		<td id="jump_2_4_offset"></td>
+	</tr>
   </table>
   </div>
-
   <div id="exploit" style="display: none;"></div>
   <div id="trigger" style="display: none;"></div>
-
-  <div class="footer">PS3 Flash Writer 4.91 &mdash; Unofficial Release</div>
-
-</div>
 <script>
 var ftype = "NOR",
 	chk, vshchk, jump_1_addr_2, jump_2_addr_2, jump_2_2, jump_1_2, xtra_data, stack_frame, stack_frame2, stack_frame2_addr, jump_2, jump_1, xtra_data_addr, stack_frame_addr, jump_2_addr, jump_1_addr, stack_frame3, stack_frame3_addr, jump_1_addr_3, jump_2_addr_3, stack_frame4, stack_frame4_addr, jump_1_addr_4, jump_2_addr_4, offset_array = [],
@@ -1179,5 +925,3 @@ function HFWmsg()
 	throw new Error();
 }
 </script>
-</body>
-</html>
